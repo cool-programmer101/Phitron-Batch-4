@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define pb push_back
+#define vi vector<int>
+#define vll vector<long long int>
+#define vd vector<double>
+#define vs vector<string>
+#define mod 1000000007
+void solve()
+{
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    int i = 0, j = 0, max_len = 0, curr_len = 0;
+    map<int, int> freq;
+    while (j < n)
+    {
+        if (freq.find(arr[j]) == freq.end() || freq[arr[j]] == 0)
+        {
+            freq[arr[j]]++;
+            curr_len++;
+            max_len = max(max_len, curr_len);
+            j++;
+        }
+        else
+        {
+            curr_len--;
+            freq[arr[i]]--;
+            i++;
+        }
+    }
+    cout << max_len;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    solve();
+
+    return 0;
+}
